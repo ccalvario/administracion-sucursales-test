@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+project.ext {
+    lifecycle_version = "1.1.1"
+    room_version = "1.1.1"
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -27,4 +32,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'co.trikita:log:1.1.5'
+
+    implementation "android.arch.lifecycle:extensions:$project.lifecycle_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycle_version"
+    implementation "android.arch.persistence.room:runtime:$project.room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$project.room_version"
 }

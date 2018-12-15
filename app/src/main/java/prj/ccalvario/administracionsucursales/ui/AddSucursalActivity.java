@@ -1,12 +1,17 @@
 package prj.ccalvario.administracionsucursales.ui;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.databinding.DataBindingUtil;
+
+import prj.ccalvario.administracionsucursales.model.Sucursal;
+import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
@@ -23,6 +28,23 @@ public class AddSucursalActivity extends AppCompatActivity {
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_sucursal);
         mSucursalViewModel = ViewModelProviders.of(this).get(SucursalViewModel.class);
+
+
+        Bundle b = getIntent().getExtras();
+        if(b != null){
+            int id = b.getInt("id");
+            mSucursalViewModel.getSucursal(id).observe(this, new Observer<Sucursal>() {
+                @Override
+                public void onChanged(@Nullable final Sucursal sucursal) {
+                    mSucursalViewModel.sucursal.set(sucursal);
+                }
+            });
+        } else {
+            mSucursalViewModel.sucursal.set(new Sucursal());
+        }
+
+
+
         mBinding.setViewModel(mSucursalViewModel);
     }
 

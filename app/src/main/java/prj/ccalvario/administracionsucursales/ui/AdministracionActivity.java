@@ -10,16 +10,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.List;
 
+import prj.ccalvario.administracionsucursales.adapter.CustomItemClickListener;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.model.Sucursal;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
+import prj.ccalvario.administracionsucursales.adapter.SucursalListAdapter;
 
 public class AdministracionActivity extends AppCompatActivity {
 
@@ -64,12 +70,55 @@ public class AdministracionActivity extends AppCompatActivity {
                     }
                 });
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_sucursalList);
+        final SucursalListAdapter adapter = new SucursalListAdapter(this, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                String nombre = mSucursalViewModel.getAllSucursales().getValue().get(position).getNombre();
+                Log.d("ccz onItemClick " + nombre);
+                /*Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("position", position);
+                intent.putExtras(b);
+                startActivityForResult(intent, 1);*/
+            }
+
+            @Override
+            public void onEditClick(View v, int position) {
+                Log.d("ccz onItemClick " + position);
+                Sucursal sucursal = mSucursalViewModel.getAllSucursales().getValue().get(position);
+                if(sucursal != null) {
+                    Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("id", sucursal.getId());
+                    intent.putExtras(b);
+/*                b.putString("calle", sucursal.getCalle());
+                b.putString("colonia", sucursal.getColonia());
+                b.putString("numero", Integer.toString(sucursal.getNumero()));
+                b.putString("codigoPostal", Integer.toString(sucursal.getCodigoPostal()));
+                b.putString("ciudad", sucursal.getNombre());
+                b.putString("pais", sucursal.getNombre());*/
+                    startActivity(intent);
+                }
+
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         mSucursalViewModel = ViewModelProviders.of(this).get(SucursalViewModel.class);
 
         mSucursalViewModel.getAllSucursales().observe(this, new Observer<List<Sucursal>>() {
             @Override
             public void onChanged(@Nullable final List<Sucursal> sucursales) {
-                // Update the cached copy of the words in the adapter.
+
+                adapter.setSucursales(sucursales);
+
                 for(int i = 0; i < sucursales.size(); i++) {
                     Log.d("ccz Lista de sucursales "
                             + sucursales.get(i).getId()

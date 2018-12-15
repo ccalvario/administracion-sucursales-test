@@ -15,9 +15,9 @@ public class Sucursal {
 
     private String mColonia;
 
-    private int mNumero;
+    private String mNumero;
 
-    private int mCodigoPostal;
+    private String mCodigoPostal;
 
     private String mCiudad;
 
@@ -33,9 +33,9 @@ public class Sucursal {
 
     public String getColonia() { return mColonia; }
 
-    public int getNumero() { return mNumero; }
+    public String getNumero() { return mNumero; }
 
-    public int getCodigoPostal() { return mCodigoPostal; }
+    public String getCodigoPostal() { return mCodigoPostal; }
 
     public String getCiudad() { return mCiudad; }
 
@@ -51,9 +51,9 @@ public class Sucursal {
 
     public void setColonia(String colonia) { mColonia = colonia; }
 
-    public void setNumero(int numero) { mNumero = numero; }
+    public void setNumero(String numero) { mNumero = numero; }
 
-    public void setCodigoPostal(int codigoPostal) { mCodigoPostal = codigoPostal; }
+    public void setCodigoPostal(String codigoPostal) { mCodigoPostal = codigoPostal; }
 
     public void setCiudad(String ciudad) { mCiudad = ciudad; }
 

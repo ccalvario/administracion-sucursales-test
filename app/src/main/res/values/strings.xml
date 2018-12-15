@@ -13,4 +13,5 @@
     <string name="sucursal_ciudad">Ciudad</string>
     <string name="sucursal_pais">Pais</string>
     <string name="error_campo_obligatorio">Este campo es obligatorio.</string>
+    <string name="num_empleados">Empleados: </string>
 </resources>

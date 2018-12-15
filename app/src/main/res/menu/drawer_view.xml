@@ -2,13 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_administration"
-            android:title="Inicio" />
+            android:id="@+id/nav_administracion"
+            android:title="Inicio"
+            android:checked="true" />
         <item
-            android:id="@+id/nav_add_branch"
+            android:id="@+id/nav_add_sucursal"
             android:title="Registrar Sucursal" />
         <item
-            android:id="@+id/nav_add_employee"
+            android:id="@+id/nav_add_empleado"
             android:title="Registrar Empleado" />
         <item
             android:id="@+id/nav_logout"

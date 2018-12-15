@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
             android:theme="@android:style/Theme.NoDisplay">
@@ -18,7 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AdministracionActivity" />
+        <activity
+            android:name=".ui.AdministracionActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="@string/activity_title_administracion"
+            />
+        <activity
+            android:name=".ui.AddSucursalActivity"
+            android:parentActivityName=".ui.AdministracionActivity"
+            android:label="@string/activity_title_add_sucursal"
+             >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.AdministracionActivity" />
+        </activity>
     </application>
 
 </manifest>

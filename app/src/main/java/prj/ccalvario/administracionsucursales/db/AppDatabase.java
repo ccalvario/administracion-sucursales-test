@@ -12,7 +12,7 @@ import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.model.Sucursal;
 
-@Database(entities = {Sucursal.class}, version = 1)
+@Database(entities = {Sucursal.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sInstance;

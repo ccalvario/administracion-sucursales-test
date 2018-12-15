@@ -14,4 +14,7 @@
     <string name="sucursal_pais">Pais</string>
     <string name="error_campo_obligatorio">Este campo es obligatorio.</string>
     <string name="num_empleados">Empleados: </string>
+
+    <string name="navigation_drawer_open">Abir drawer</string>
+    <string name="navigation_drawer_close">Cerrar drawer</string>
 </resources>

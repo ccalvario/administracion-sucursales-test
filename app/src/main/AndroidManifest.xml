@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".ui.AdministracionActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/activity_title_administracion"
             />
         <activity

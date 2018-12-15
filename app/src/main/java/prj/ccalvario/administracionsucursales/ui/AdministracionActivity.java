@@ -8,6 +8,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -27,9 +28,8 @@ import prj.ccalvario.administracionsucursales.model.Sucursal;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
 import prj.ccalvario.administracionsucursales.adapter.SucursalListAdapter;
 
-public class AdministracionActivity extends AppCompatActivity {
-
-    private DrawerLayout mDrawerLayout;
+public class AdministracionActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private SucursalViewModel mSucursalViewModel;
 
@@ -37,38 +37,20 @@ public class AdministracionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administracion);
-        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        NavigationView navigationView = findViewById(R.id.nav_menu);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        //menuItem.setChecked(true);
-                        mDrawerLayout.closeDrawers();
-                        switch(menuItem.getItemId()) {
-                            case R.id.nav_administracion:
-                                break;
-                            case R.id.nav_add_sucursal:
-                                Intent activityIntent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
-                                startActivity(activityIntent);
-                                break;
-                            case R.id.nav_add_empleado:
-                                break;
-                            case R.id.nav_logout:
-                                break;
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-                        }
-
-                        return true;
-                    }
-                });
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
+        navigationView.setNavigationItemSelectedListener(this);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_sucursalList);
         final SucursalListAdapter adapter = new SucursalListAdapter(this, new CustomItemClickListener() {
@@ -92,12 +74,6 @@ public class AdministracionActivity extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putInt("id", sucursal.getId());
                     intent.putExtras(b);
-/*                b.putString("calle", sucursal.getCalle());
-                b.putString("colonia", sucursal.getColonia());
-                b.putString("numero", Integer.toString(sucursal.getNumero()));
-                b.putString("codigoPostal", Integer.toString(sucursal.getCodigoPostal()));
-                b.putString("ciudad", sucursal.getNombre());
-                b.putString("pais", sucursal.getNombre());*/
                     startActivity(intent);
                 }
 
@@ -132,6 +108,16 @@ public class AdministracionActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -139,5 +125,26 @@ public class AdministracionActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }*/
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+
+        if (id == R.id.nav_administracion) {
+        } else if (id == R.id.nav_add_sucursal) {
+            Intent activityIntent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
+            startActivity(activityIntent);
+
+        } else if (id == R.id.nav_add_empleado) {
+
+        } else if (id == R.id.nav_logout) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

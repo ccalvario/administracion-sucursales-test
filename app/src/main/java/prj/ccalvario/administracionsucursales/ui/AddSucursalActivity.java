@@ -32,6 +32,7 @@ public class AddSucursalActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if(b != null){
+            setTitle(getResources().getString(R.string.activity_title_edit_sucursal));
             int id = b.getInt("id");
             mSucursalViewModel.getSucursal(id).observe(this, new Observer<Sucursal>() {
                 @Override
@@ -65,8 +66,8 @@ public class AddSucursalActivity extends AppCompatActivity {
                     finish();
                 }
                 return true;
-            case R.id.action_delete:
-                return true;
+/*            case R.id.action_delete:
+                return true;*/
 
             default:
                 return super.onOptionsItemSelected(item);

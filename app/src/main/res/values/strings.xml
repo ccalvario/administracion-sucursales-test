@@ -2,7 +2,7 @@
     <string name="app_name">Administracion Sucursales</string>
     <string name="activity_title_administracion">Administración</string>
     <string name="activity_title_add_sucursal">Registrar Sucursal</string>
-    <string name="activity_title_editar_sucursal">Editar Sucursal</string>
+    <string name="activity_title_edit_sucursal">Editar Sucursal</string>
     <string name="activity_title_detalle_sucursal">Detalle Sucursal</string>
     <string name="activity_title_add_empleado">Registrar Empleado</string>
     <string name="sucursal_nombre">Nombre</string>

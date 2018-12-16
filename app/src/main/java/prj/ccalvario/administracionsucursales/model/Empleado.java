@@ -26,7 +26,7 @@ public class Empleado {
     String rfc;
 
     @NonNull
-    String sucursalId;
+    int sucursalId;
 
     @NonNull
     String puesto;
@@ -37,7 +37,7 @@ public class Empleado {
 
     public String getRfc() { return rfc; }
 
-    public String getSucursalId() { return sucursalId; }
+    public int getSucursalId() { return sucursalId; }
 
     public String getPuesto() { return puesto; }
 
@@ -47,7 +47,7 @@ public class Empleado {
 
     public void setRfc(String rfc) { this.rfc = rfc; }
 
-    public void setSucursalId(String id) { this.sucursalId = id; }
+    public void setSucursalId(int id) { this.sucursalId = id; }
 
     public void setPuesto(String puesto) { this.puesto = puesto; }
 }

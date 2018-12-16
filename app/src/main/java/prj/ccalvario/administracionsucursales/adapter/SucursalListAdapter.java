@@ -50,7 +50,7 @@ public class SucursalListAdapter extends RecyclerView.Adapter<SucursalListAdapte
     @Override
     public void onBindViewHolder(SucursalViewHolder holder, int position) {
         if (mSucursales != null) {
-            String numEmpleados = holder.itemView.getContext().getResources().getString(R.string.num_empleados) + " " + String.valueOf(mSucursales.get(position).empleados.size());
+            String numEmpleados = String.format(holder.itemView.getContext().getResources().getString(R.string.num_empleados), String.valueOf(mSucursales.get(position).empleados.size()));//  " " + String.valueOf(mSucursales.get(position).empleados.size());
             holder.mTextViewNombre.setText(mSucursales.get(position).sucursal.getNombre());
             holder.mTextViewNumEmpleados.setText(numEmpleados);
         } else {

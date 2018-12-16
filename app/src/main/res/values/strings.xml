@@ -16,13 +16,15 @@
     <string name="error_campo_obligatorio">Este campo es obligatorio.</string>
     <string name="error_rfc_invalido">RFC inválido.</string>
     <string name="error_email_invalido">Email inválido.</string>
-    <string name="num_empleados">Núm. de empleados: </string>
+    <string name="num_empleados">Núm. de empleados: %1$s</string>
 
     <string name="empleado_nombre">Nombre</string>
     <string name="empleado_rfc">RFC</string>
     <string name="empleado_sucursal">Sucursal</string>
     <string name="empleado_puesto">Puesto</string>
 
+    <string name="sucursal_direccion">%1$s No. %2$s, %3$s. C.P %4$s</string>
+    <string name="sucursal_direccion_ciudad">%1$s, %2$s</string>
     <string name="navigation_drawer_open">Abir drawer</string>
     <string name="navigation_drawer_close">Cerrar drawer</string>
 </resources>

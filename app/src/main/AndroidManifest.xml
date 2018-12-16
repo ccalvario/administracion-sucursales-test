@@ -30,8 +30,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />
         </activity>
-        <activity android:name=".ui.AddEmpleadoActivity"
+        <activity
+            android:name=".ui.AddEmpleadoActivity"
             android:label="@string/activity_title_add_empleado">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.AdministracionActivity" />
+        </activity>
+        <activity android:name=".ui.DetalleSucursalActivity"
+            android:label="@string/activity_title_detalle_sucursal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />

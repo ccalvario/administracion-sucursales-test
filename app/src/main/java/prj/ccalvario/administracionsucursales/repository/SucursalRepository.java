@@ -34,6 +34,10 @@ public class SucursalRepository {
         return mSucursalDao.getSucursal(id);
     }
 
+    public LiveData<SucursalEmpleados> getSucursalEmpleados(int id) {
+        return mSucursalDao.getSucursalEmpleados(id);
+    }
+
     public void insert (Sucursal sucursal) { new insertAsyncTask(mSucursalDao).execute(sucursal); }
 
     public void update (Sucursal sucursal) { new updateAsyncTask(mSucursalDao).execute(sucursal); }

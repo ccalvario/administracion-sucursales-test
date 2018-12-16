@@ -58,13 +58,12 @@ public class AdministracionActivity extends AppCompatActivity
         final SucursalListAdapter adapter = new SucursalListAdapter(this, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                String nombre = mEmpleadosSucursal.get(position).sucursal.getNombre();
-                Log.d("ccz onItemClick " + nombre);
-                /*Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
+                Sucursal sucursal = mEmpleadosSucursal.get(position).sucursal;
+                Intent intent = new Intent(AdministracionActivity.this, DetalleSucursalActivity.class);
                 Bundle b = new Bundle();
-                b.putInt("position", position);
+                b.putInt("id", sucursal.getId());
                 intent.putExtras(b);
-                startActivityForResult(intent, 1);*/
+                startActivity(intent);
             }
 
             @Override

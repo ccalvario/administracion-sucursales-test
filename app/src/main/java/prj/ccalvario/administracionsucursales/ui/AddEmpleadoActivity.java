@@ -102,7 +102,7 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int sucursalId = mSucursales.get(position).getId();
-        mEmpleadolViewModel.empleado.get().setSucursalId(String.valueOf(sucursalId));
+        mEmpleadolViewModel.empleado.get().setSucursalId(sucursalId);
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {

@@ -20,6 +20,7 @@ public class SucursalViewModel extends AndroidViewModel {
     private SucursalRepository mSucursalRepository;
 
     public final ObservableField<Sucursal> sucursal = new ObservableField<>();
+    public final ObservableField<SucursalEmpleados> sucursalEmpleados = new ObservableField<>();
     public final ObservableField<List<Empleado>> empleadosSucursal = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
@@ -44,6 +45,8 @@ public class SucursalViewModel extends AndroidViewModel {
     public void update(Sucursal sucursal) { mSucursalRepository.update(sucursal); }
 
     public LiveData<Sucursal> getSucursal(int id) { return mSucursalRepository.getSucursal(id); }
+
+    public LiveData<SucursalEmpleados> getSucursalEmpleados(int id) { return mSucursalRepository.getSucursalEmpleados(id); }
 
     public void setSucursal(Sucursal sucursal) {
         this.sucursal.set(sucursal);

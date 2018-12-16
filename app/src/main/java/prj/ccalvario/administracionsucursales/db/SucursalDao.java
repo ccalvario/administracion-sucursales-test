@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Transaction;
 import android.arch.persistence.room.Update;
 
 import java.util.List;
@@ -21,10 +22,15 @@ public interface SucursalDao {
     LiveData<List<Sucursal>> getAllSucursales();
 
     @Query("SELECT * FROM sucursales")
+    @Transaction
     public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados();
 
     @Query("SELECT * FROM sucursales WHERE id = :id")
     LiveData<Sucursal> getSucursal(int id);
+
+    @Query("SELECT * FROM sucursales WHERE id = :id")
+    @Transaction
+    LiveData<SucursalEmpleados> getSucursalEmpleados(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Sucursal sucursal);

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.AddSucursalActivity">
+
+    <data>
+        <variable name="viewModel" type="prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/item_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_vertical_margin"
+                    android:layout_marginStart="@dimen/item_horizontal_margin"
+                    android:layout_marginEnd="@dimen/item_horizontal_margin">
+
+                    <TextView
+                        android:id="@+id/textView_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.sucursalEmpleados.sucursal.nombre}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="@string/sucursal_nombre" />
+
+                    <TextView
+                        android:id="@+id/textView_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/sucursal_direccion(viewModel.sucursalEmpleados.sucursal.calle, viewModel.sucursalEmpleados.sucursal.numero, viewModel.sucursalEmpleados.sucursal.colonia, viewModel.sucursalEmpleados.sucursal.codigoPostal)}"
+                        android:textSize="18sp"
+                        tools:text="@string/sucursal_calle" />
+
+                    <TextView
+                        android:id="@+id/textView_ciuad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/sucursal_direccion_ciudad(viewModel.sucursalEmpleados.sucursal.ciudad, viewModel.sucursalEmpleados.sucursal.pais)}"
+                        android:textSize="18sp"
+                        tools:text="@string/sucursal_calle" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/item_vertical_margin"
+                android:layout_marginBottom="@dimen/item_vertical_margin"
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:layout_marginEnd="@dimen/item_horizontal_margin">
+
+                    <TextView
+                        android:id="@+id/textView_numEmpleados"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/num_empleados(viewModel.sucursalEmpleados.empleados.size())}"
+                        android:textSize="18sp"
+                        tools:text="@string/sucursal_calle" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>

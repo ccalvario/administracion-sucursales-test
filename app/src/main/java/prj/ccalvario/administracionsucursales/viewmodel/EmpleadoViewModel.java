@@ -73,7 +73,7 @@ public class EmpleadoViewModel extends AndroidViewModel {
             errorRfc.set(null);
         }
 
-        if(empleado.get().getSucursalId() == null) {
+        if(empleado.get().getSucursalId() == 0) {
             errorSucursalId.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {

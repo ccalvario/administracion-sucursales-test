@@ -12,12 +12,13 @@ import java.util.List;
 
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.model.Sucursal;
+import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 
 public class SucursalListAdapter extends RecyclerView.Adapter<SucursalListAdapter.SucursalViewHolder> {
 
     private CustomItemClickListener mListener;
     private final LayoutInflater mInflater;
-    private List<Sucursal> mSucursales;
+    private List<SucursalEmpleados> mSucursales;
 
     public SucursalListAdapter(Context context, CustomItemClickListener listener) {
         mInflater = LayoutInflater.from(context);
@@ -49,14 +50,14 @@ public class SucursalListAdapter extends RecyclerView.Adapter<SucursalListAdapte
     @Override
     public void onBindViewHolder(SucursalViewHolder holder, int position) {
         if (mSucursales != null) {
-            Sucursal current = mSucursales.get(position);
-            holder.mTextViewNombre.setText(current.getNombre());
+            holder.mTextViewNombre.setText(mSucursales.get(position).sucursal.getNombre());
+            holder.mTextViewNumEmpleados.setText(String.valueOf(mSucursales.get(position).empleados.size()));
         } else {
             holder.mTextViewNombre.setText("Vacío");
         }
     }
 
-    public void setSucursales(List<Sucursal> sucursales){
+    public void setSucursales(List<SucursalEmpleados> sucursales){
         mSucursales = sucursales;
         notifyDataSetChanged();
     }

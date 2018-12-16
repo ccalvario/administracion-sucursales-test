@@ -21,6 +21,7 @@ import android.view.View;
 import java.util.List;
 
 import prj.ccalvario.administracionsucursales.adapter.CustomItemClickListener;
+import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
@@ -32,6 +33,7 @@ public class AdministracionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SucursalViewModel mSucursalViewModel;
+    private List<SucursalEmpleados> mEmpleadosSucursal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class AdministracionActivity extends AppCompatActivity
         final SucursalListAdapter adapter = new SucursalListAdapter(this, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                String nombre = mSucursalViewModel.getAllSucursales().getValue().get(position).getNombre();
+                String nombre = mEmpleadosSucursal.get(position).sucursal.getNombre();
                 Log.d("ccz onItemClick " + nombre);
                 /*Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
                 Bundle b = new Bundle();
@@ -68,7 +70,7 @@ public class AdministracionActivity extends AppCompatActivity
             @Override
             public void onEditClick(View v, int position) {
                 Log.d("ccz onItemClick " + position);
-                Sucursal sucursal = mSucursalViewModel.getAllSucursales().getValue().get(position);
+                Sucursal sucursal = mEmpleadosSucursal.get(position).sucursal;
                 if(sucursal != null) {
                     Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
                     Bundle b = new Bundle();
@@ -89,19 +91,21 @@ public class AdministracionActivity extends AppCompatActivity
 
         mSucursalViewModel = ViewModelProviders.of(this).get(SucursalViewModel.class);
 
-        mSucursalViewModel.getAllSucursales().observe(this, new Observer<List<Sucursal>>() {
+        mSucursalViewModel.getSucursalesEmpleados().observe(this, new Observer<List<SucursalEmpleados>>() {
             @Override
-            public void onChanged(@Nullable final List<Sucursal> sucursales) {
+            public void onChanged(@Nullable final List<SucursalEmpleados> sucursales) {
 
                 adapter.setSucursales(sucursales);
+                mEmpleadosSucursal = sucursales;
 
                 for(int i = 0; i < sucursales.size(); i++) {
                     Log.d("ccz Lista de sucursales "
-                            + sucursales.get(i).getId()
-                            + " nombre " + sucursales.get(i).getNombre()
-                            + " colonia " + sucursales.get(i).getColonia()
-                            + " numero " + sucursales.get(i).getNumero()
-                            + " codigoPostal " + sucursales.get(i).getCodigoPostal());
+                            + sucursales.get(i).sucursal.getId()
+                            + " nombre " + sucursales.get(i).sucursal.getNombre()
+                            + " numEmp " + sucursales.get(i).empleados.size()
+                            + " colonia " + sucursales.get(i).sucursal.getColonia()
+                            + " numero " + sucursales.get(i).sucursal.getNumero()
+                            + " codigoPostal " + sucursales.get(i).sucursal.getCodigoPostal());
                 }
             }
         });
@@ -138,7 +142,8 @@ public class AdministracionActivity extends AppCompatActivity
             startActivity(activityIntent);
 
         } else if (id == R.id.nav_add_empleado) {
-
+            Intent activityIntent = new Intent(AdministracionActivity.this, AddEmpleadoActivity.class);
+            startActivity(activityIntent);
         } else if (id == R.id.nav_logout) {
 
         }

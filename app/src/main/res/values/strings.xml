@@ -5,15 +5,21 @@
     <string name="activity_title_edit_sucursal">Editar Sucursal</string>
     <string name="activity_title_detalle_sucursal">Detalle Sucursal</string>
     <string name="activity_title_add_empleado">Registrar Empleado</string>
+    <string name="activity_title_edit_empleado">Editar Empleado</string>
     <string name="sucursal_nombre">Nombre</string>
     <string name="sucursal_calle">Calle</string>
     <string name="sucursal_colonia">Colonia</string>
     <string name="sucursal_numero">Número</string>
     <string name="sucursal_codigo_postal">Código Postal</string>
     <string name="sucursal_ciudad">Ciudad</string>
-    <string name="sucursal_pais">Pais</string>
+    <string name="sucursal_pais">País</string>
     <string name="error_campo_obligatorio">Este campo es obligatorio.</string>
-    <string name="num_empleados">Empleados: </string>
+    <string name="num_empleados">Núm. de empleados: </string>
+
+    <string name="empleado_nombre">Nombre</string>
+    <string name="empleado_rfc">RFC</string>
+    <string name="empleado_sucursal">Sucursal</string>
+    <string name="empleado_puesto">Puesto</string>
 
     <string name="navigation_drawer_open">Abir drawer</string>
     <string name="navigation_drawer_close">Cerrar drawer</string>

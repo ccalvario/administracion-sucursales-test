@@ -6,6 +6,9 @@ import android.arch.lifecycle.LiveData;
 import android.databinding.ObservableField;
 
 import java.util.List;
+
+import prj.ccalvario.administracionsucursales.model.Empleado;
+import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
@@ -15,9 +18,10 @@ import prj.ccalvario.administracionsucursales.repository.SucursalRepository;
 public class SucursalViewModel extends AndroidViewModel {
 
     private SucursalRepository mSucursalRepository;
-    private LiveData<List<Sucursal>> mAllSucursales;
 
     public final ObservableField<Sucursal> sucursal = new ObservableField<>();
+    public final ObservableField<List<Empleado>> empleadosSucursal = new ObservableField<>();
+    public final ObservableField<String> numEmpleados = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
     public final ObservableField<String> errorCalle = new ObservableField<>();
@@ -30,10 +34,11 @@ public class SucursalViewModel extends AndroidViewModel {
     public SucursalViewModel(Application application) {
         super(application);
         mSucursalRepository = new SucursalRepository(application);
-        mAllSucursales = mSucursalRepository.getAllSucursales();
     }
 
-    public LiveData<List<Sucursal>> getAllSucursales() { return mAllSucursales; }
+    public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepository.getAllSucursales(); }
+
+    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados() { return mSucursalRepository.getSucursalesEmpleados(); }
 
     public void insert(Sucursal sucursal) { mSucursalRepository.insert(sucursal); }
 

@@ -8,11 +8,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import prj.ccalvario.administracionsucursales.model.Empleado;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.model.Sucursal;
 
-@Database(entities = {Sucursal.class}, exportSchema = false, version = 1)
+@Database(entities = {Sucursal.class, Empleado.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sInstance;
@@ -20,6 +21,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "sucursales-db";
 
     public abstract SucursalDao sucursalDao();
+    public abstract EmpleadoDao empleadoDao();
 
     public static AppDatabase getInstance(final Context context) {
         if(sInstance == null) {

@@ -5,6 +5,8 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
+
+import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.db.AppDatabase;
@@ -14,20 +16,21 @@ import prj.ccalvario.administracionsucursales.model.Sucursal;
 public class SucursalRepository {
 
     private SucursalDao mSucursalDao;
-    private LiveData<List<Sucursal>> mAllSucursales;
 
     public SucursalRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
         mSucursalDao = db.sucursalDao();
-        mAllSucursales = mSucursalDao.getAllSucursales();
     }
 
     public LiveData<List<Sucursal>> getAllSucursales() {
-        return mAllSucursales;
+        return mSucursalDao.getAllSucursales();
+    }
+
+    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados() {
+        return mSucursalDao.getSucursalesEmpleados();
     }
 
     public LiveData<Sucursal> getSucursal(int id) {
-        LiveData<Sucursal> suc = mSucursalDao.getSucursal(id);
         return mSucursalDao.getSucursal(id);
     }
 

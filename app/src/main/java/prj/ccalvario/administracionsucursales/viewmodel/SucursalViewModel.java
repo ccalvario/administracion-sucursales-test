@@ -21,7 +21,6 @@ public class SucursalViewModel extends AndroidViewModel {
 
     public final ObservableField<Sucursal> sucursal = new ObservableField<>();
     public final ObservableField<List<Empleado>> empleadosSucursal = new ObservableField<>();
-    public final ObservableField<String> numEmpleados = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
     public final ObservableField<String> errorCalle = new ObservableField<>();

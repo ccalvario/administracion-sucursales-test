@@ -8,6 +8,7 @@ import android.databinding.ObservableField;
 import java.util.List;
 
 import prj.ccalvario.administracionsucursales.model.Sucursal;
+import prj.ccalvario.administracionsucursales.utils.Utils;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
@@ -19,7 +20,6 @@ public class EmpleadoViewModel extends AndroidViewModel {
 
     private EmpleadoRepository mEmpleadoRepository;
     private SucursalRepository mSucursalRepositoy;
-    //private LiveData<List<Empleado>> mAllSucursales;
 
     public final ObservableField<Empleado> empleado = new ObservableField<>();
 
@@ -55,11 +55,36 @@ public class EmpleadoViewModel extends AndroidViewModel {
     public boolean ValidateInput() {
         boolean result = true;
 
+        Log.d("ccz validateinput nombre " + empleado.get().getNombre() + " suc " + empleado.get().getSucursalId());
         if(empleado.get().getNombre() == null) {
             errorNombre.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorNombre.set(null);
+        }
+
+        if(empleado.get().getRfc() == null) {
+            errorRfc.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
+        } else if(!Utils.isRfcValid(empleado.get().getRfc())) {
+            errorRfc.set(getApplication().getResources().getString(R.string.error_rfc_invalido));
+            result = false;
+        } else {
+            errorRfc.set(null);
+        }
+
+        if(empleado.get().getSucursalId() == null) {
+            errorSucursalId.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
+        } else {
+            errorSucursalId.set(null);
+        }
+
+        if(empleado.get().getPuesto() == null) {
+            errorPuesto.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
+        } else {
+            errorPuesto.set(null);
         }
 
         return result;

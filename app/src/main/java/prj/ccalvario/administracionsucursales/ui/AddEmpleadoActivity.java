@@ -9,6 +9,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
+import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.model.Empleado;
@@ -16,10 +24,11 @@ import prj.ccalvario.administracionsucursales.model.Sucursal;
 import prj.ccalvario.administracionsucursales.viewmodel.EmpleadoViewModel;
 import prj.ccalvario.administracionsucursales.databinding.ActivityAddEmpleadoBinding;
 
-public class AddEmpleadoActivity extends AppCompatActivity {
+public class AddEmpleadoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EmpleadoViewModel mEmpleadolViewModel;
     ActivityAddEmpleadoBinding mBinding;
+    private List<Sucursal> mSucursales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,26 @@ public class AddEmpleadoActivity extends AppCompatActivity {
         } else {
             mEmpleadolViewModel.empleado.set(new Empleado());
         }
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_sucursales);
+        spinner.setOnItemSelectedListener(this);
+
+        mEmpleadolViewModel.getAllSucursales().observe(this, new Observer<List<Sucursal>>() {
+            @Override
+            public void onChanged(@Nullable final List<Sucursal> sucursales) {
+                mSucursales = sucursales;
+                List<String> list = new ArrayList<String>();
+                for(int i = 0; i < sucursales.size(); i++) {
+                    list.add(sucursales.get(i).getNombre());
+                }
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddEmpleadoActivity.this,
+                        android.R.layout.simple_spinner_item, list);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(dataAdapter);
+            }
+        });
+
+
     }
 
     @Override
@@ -68,5 +97,15 @@ public class AddEmpleadoActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        int sucursalId = mSucursales.get(position).getId();
+        mEmpleadolViewModel.empleado.get().setSucursalId(String.valueOf(sucursalId));
+    }
+
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }

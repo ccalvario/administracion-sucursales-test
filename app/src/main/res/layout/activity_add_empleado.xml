@@ -65,30 +65,6 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInput_sucursalId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_rfc"
-                app:error="@{viewModel.errorSucursalId}">
-
-                <EditText
-                    android:id="@+id/editText_sucursalId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/empleado_sucursal"
-                    android:inputType="textPersonName|textCapSentences"
-                    android:maxLines="1"
-                    android:text="@={viewModel.empleado.sucursalId}" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
                 android:id="@+id/textInput_puesto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,11 +75,11 @@
                 android:layout_marginRight="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_sucursalId"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_rfc"
                 app:error="@{viewModel.errorPuesto}">
 
                 <EditText
-                    android:id="@+id/editText_numero"
+                    android:id="@+id/editText_puesto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/empleado_puesto"
@@ -111,6 +87,31 @@
                     android:maxLines="1"
                     android:text="@={viewModel.empleado.puesto}" />
             </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinner_sucursales"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_sucursal" />
+
+            <TextView
+                android:id="@+id/textView_sucursal"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/empleado_sucursal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_puesto" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

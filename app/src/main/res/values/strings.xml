@@ -14,6 +14,8 @@
     <string name="sucursal_ciudad">Ciudad</string>
     <string name="sucursal_pais">País</string>
     <string name="error_campo_obligatorio">Este campo es obligatorio.</string>
+    <string name="error_rfc_invalido">RFC inválido.</string>
+    <string name="error_email_invalido">Email inválido.</string>
     <string name="num_empleados">Núm. de empleados: </string>
 
     <string name="empleado_nombre">Nombre</string>

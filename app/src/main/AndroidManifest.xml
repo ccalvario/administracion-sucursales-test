@@ -20,14 +20,18 @@
         </activity>
         <activity
             android:name=".ui.AdministracionActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/activity_title_administracion"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.AddSucursalActivity"
-            android:parentActivityName=".ui.AdministracionActivity"
             android:label="@string/activity_title_add_sucursal"
-             >
+            android:parentActivityName=".ui.AdministracionActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.AdministracionActivity" />
+        </activity>
+        <activity android:name=".ui.AddEmpleadoActivity"
+            android:label="@string/activity_title_add_empleado">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />

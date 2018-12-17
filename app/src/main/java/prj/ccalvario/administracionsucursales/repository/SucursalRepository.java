@@ -21,12 +21,12 @@ public class SucursalRepository {
         mSucursalDao = db.sucursalDao();
     }
 
-    public LiveData<List<Sucursal>> getAllSucursales() {
-        return mSucursalDao.getAllSucursales();
+    public LiveData<List<Sucursal>> getAllSucursales(String usuarioId) {
+        return mSucursalDao.getAllSucursales(usuarioId);
     }
 
-    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() {
-        return mSucursalDao.getSucursalesEmpleados();
+    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados(String usuarioId) {
+        return mSucursalDao.getSucursalesEmpleados(usuarioId);
     }
 
     public LiveData<Sucursal> getSucursal(int id) {

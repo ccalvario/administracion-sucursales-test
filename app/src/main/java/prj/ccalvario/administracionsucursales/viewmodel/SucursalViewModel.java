@@ -35,9 +35,9 @@ public class SucursalViewModel extends AndroidViewModel {
         mSucursalRepository = new SucursalRepository(application);
     }
 
-    public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepository.getAllSucursales(); }
+    public LiveData<List<Sucursal>> getAllSucursales(String usuarioId) { return mSucursalRepository.getAllSucursales(usuarioId); }
 
-    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() { return mSucursalRepository.getSucursalesConEmpleados(); }
+    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados(String usuarioId) { return mSucursalRepository.getSucursalesConEmpleados(usuarioId); }
 
     public void insert(Sucursal sucursal) { mSucursalRepository.insert(sucursal); }
 

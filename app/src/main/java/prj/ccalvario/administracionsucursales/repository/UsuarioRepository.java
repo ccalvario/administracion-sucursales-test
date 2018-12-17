@@ -26,6 +26,8 @@ public class UsuarioRepository {
 
     public LiveData<Usuario> getUsuario(int id) { return mUsuarioDao.getUsuario(id); }
 
+    public LiveData<Usuario> getUsuarioByEmailPassword(String email, String password) { return mUsuarioDao.getUsuarioByEmailPassword(email, password); }
+
     public void insert (Usuario usuario) { new insertAsyncTask(mUsuarioDao).execute(usuario); }
 
     public void update (Usuario sucursal) { new updateAsyncTask(mUsuarioDao).execute(sucursal); }

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="item_horizontal_margin">8dp</dimen>
     <dimen name="item_vertical_margin">8dp</dimen>
+    <dimen name="input_horizontal_margin">24dp</dimen>
 </resources>

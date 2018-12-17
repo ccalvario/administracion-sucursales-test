@@ -6,6 +6,8 @@
     <string name="activity_title_detalle_sucursal">Detalle Sucursal</string>
     <string name="activity_title_add_empleado">Registrar Empleado</string>
     <string name="activity_title_edit_empleado">Editar Empleado</string>
+    <string name="activity_title_login">Iniciar sesión</string>
+    <string name="activity_title_add_usuario">Crear cuenta</string>
     <string name="sucursal_nombre">Nombre</string>
     <string name="sucursal_calle">Calle</string>
     <string name="sucursal_colonia">Colonia</string>
@@ -22,6 +24,16 @@
     <string name="empleado_rfc">RFC</string>
     <string name="empleado_sucursal">Sucursal</string>
     <string name="empleado_puesto">Puesto</string>
+    <string name="usuario_nombre">Nombre</string>
+    <string name="usuario_email">Email</string>
+    <string name="usuario_rfc">RFC</string>
+    <string name="usuario_empresa">Empresa</string>
+    <string name="usuario_password">Password</string>
+
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_login_crear">¿Ya tienes una cuenta? <u>Iniciar sesión</u></string>
+    <string name="btn_crear">Crear cuenta</string>
+    <string name="btn_crear_login">¿No tienes una cuenta? <u>Crear cuenta</u></string>
 
     <string name="sucursal_direccion">%1$s No. %2$s, %3$s. C.P %4$s</string>
     <string name="sucursal_direccion_ciudad">%1$s, %2$s</string>

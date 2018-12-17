@@ -23,6 +23,9 @@ public interface UsuarioDao {
     @Query("SELECT * FROM usuarios WHERE email = :email")
     LiveData<Usuario> getUsuario(String email);
 
+    @Query("SELECT * FROM usuarios WHERE email = :email AND password = :password")
+    LiveData<Usuario> getUsuarioByEmailPassword(String email, String password);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Usuario usuario);
 

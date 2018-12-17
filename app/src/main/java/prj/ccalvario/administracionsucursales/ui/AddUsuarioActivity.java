@@ -2,7 +2,6 @@ package prj.ccalvario.administracionsucursales.ui;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -28,13 +27,9 @@ public class AddUsuarioActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_usuario);
         mUsuarioViewModel = ViewModelProviders.of(this).get(UsuarioViewModel.class);
         mBinding.setViewModel(mUsuarioViewModel);
-        Log.d("ccz oncreate");
-
-        //mUsuarioViewModel.usuario.set(new Usuario());
 
         mBinding.btnCrear.setOnClickListener(
                 (View view) -> {
-                    Log.d("LoginActivity", "ccz crear usuario");
                     if(mUsuarioViewModel.registrarUsuario()) {
                         finish();
                     }
@@ -42,10 +37,6 @@ public class AddUsuarioActivity extends AppCompatActivity {
 
         mBinding.btnLogin.setOnClickListener(
                 (View view) -> {
-
-                    Log.d("LoginActivity", "ccz login usuario");
-                    Intent intent = new Intent(AddUsuarioActivity.this, LoginActivity.class);
-                    startActivity(intent);
                     finish();
                 });
 

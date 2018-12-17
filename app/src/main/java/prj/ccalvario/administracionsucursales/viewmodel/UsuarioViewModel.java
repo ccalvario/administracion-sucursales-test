@@ -56,7 +56,6 @@ public class UsuarioViewModel extends AndroidViewModel {
             mUsuarioRepository.insert(usuario);
             result = true;
         }
-        Log.d("ccz login");
         return result;
     }
 
@@ -90,7 +89,6 @@ public class UsuarioViewModel extends AndroidViewModel {
         } else {
             errorEmpresa.set(null);
         }
-
 
         if(password.get() == null || password.get().isEmpty()) {
             errorPassword.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));

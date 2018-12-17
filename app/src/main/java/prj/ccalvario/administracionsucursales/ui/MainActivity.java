@@ -9,8 +9,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent activityIntent = new Intent(this, AdministracionActivity.class);
-        startActivity(activityIntent);
+
+        boolean isLoggedIn = false;
+        if(isLoggedIn) {
+            Intent activityIntent = new Intent(this, AdministracionActivity.class);
+            startActivity(activityIntent);
+        } else {
+            Intent activityIntent = new Intent(this, LoginActivity.class);
+            startActivity(activityIntent);
+        }
+
+
         finish();
     }
 }

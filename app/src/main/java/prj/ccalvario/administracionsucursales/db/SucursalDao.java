@@ -16,8 +16,6 @@ import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 @Dao
 public interface SucursalDao {
 
-    //@Query("SELECT sucursales.*, count(empleados.id) AS numEmpleadosSucursal FROM sucursales LEFT JOIN empleados ON sucursales.id = empleados.sucursalId ")
-    //LiveData<List<Sucursal>> getAllSucursales();
     @Query("SELECT * FROM sucursales")
     LiveData<List<Sucursal>> getAllSucursales();
 

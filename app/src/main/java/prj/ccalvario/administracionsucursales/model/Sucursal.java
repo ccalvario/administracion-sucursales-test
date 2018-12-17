@@ -31,8 +31,8 @@ public class Sucursal {
     @NonNull
     private String pais;
 
-    //@NonNull
-    private String usuario;
+    @NonNull
+    private String usuarioId;
 
     public int getId() { return id; }
 
@@ -50,7 +50,7 @@ public class Sucursal {
 
     public String getPais() { return pais; }
 
-    public String getUsuario() { return usuario; }
+    public String getUsuarioId() { return usuarioId; }
 
     public void setId(int id) { this.id = id; }
 
@@ -68,5 +68,5 @@ public class Sucursal {
 
     public void setPais(String pais) { this.pais = pais; }
 
-    public void setUsuario(String usuario) { this.usuario = usuario; }
+    public void setUsuarioId(String usuarioId) { this.usuarioId = usuarioId; }
 }

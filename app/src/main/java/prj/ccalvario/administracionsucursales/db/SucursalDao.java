@@ -16,12 +16,19 @@ import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 @Dao
 public interface SucursalDao {
 
-    @Query("SELECT * FROM sucursales WHERE usuarioId = :usuarioId")
-    LiveData<List<Sucursal>> getAllSucursales(String usuarioId);
+    //@Query("SELECT * FROM sucursales WHERE usuarioId = :usuarioId")
+    //LiveData<List<Sucursal>> getAllSucursales(String usuarioId);
 
-    @Query("SELECT * FROM sucursales WHERE usuarioId = :usuarioId")
+    @Query("SELECT * FROM sucursales")
+    LiveData<List<Sucursal>> getAllSucursales();
+
+    //@Query("SELECT * FROM sucursales WHERE usuarioId = :usuarioId")
+    //@Transaction
+    //public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados(String usuarioId);
+
+    @Query("SELECT * FROM sucursales")
     @Transaction
-    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados(String usuarioId);
+    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados();
 
     @Query("SELECT * FROM sucursales WHERE id = :id")
     LiveData<Sucursal> getSucursal(int id);

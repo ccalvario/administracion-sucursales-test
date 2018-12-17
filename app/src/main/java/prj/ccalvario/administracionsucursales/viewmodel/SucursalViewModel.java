@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 
 import java.util.List;
 
+import prj.ccalvario.administracionsucursales.db.SessionManager;
 import prj.ccalvario.administracionsucursales.model.Empleado;
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 
@@ -35,9 +36,9 @@ public class SucursalViewModel extends AndroidViewModel {
         mSucursalRepository = new SucursalRepository(application);
     }
 
-    public LiveData<List<Sucursal>> getAllSucursales(String usuarioId) { return mSucursalRepository.getAllSucursales(usuarioId); }
+    public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepository.getAllSucursales(); }
 
-    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados(String usuarioId) { return mSucursalRepository.getSucursalesConEmpleados(usuarioId); }
+    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() { return mSucursalRepository.getSucursalesConEmpleados(); }
 
     public void insert(Sucursal sucursal) { mSucursalRepository.insert(sucursal); }
 
@@ -55,6 +56,7 @@ public class SucursalViewModel extends AndroidViewModel {
         if(sucursal.get().getId() > 0){
             update(sucursal.get());
         } else {
+            //sucursal.get().setUsuarioId(SessionManager.getInstance().getUsuarioId());
             insert(sucursal.get());
         }
     }

@@ -38,7 +38,7 @@ public class EmpleadoViewModel extends AndroidViewModel {
 
     public LiveData<List<Empleado>> getEmpleadosSucursal(int sucursalId) { return mEmpleadoRepository.getEmpleadosSucursales(sucursalId); }
 
-    public LiveData<List<Sucursal>> getAllSucursales(String usuarioId) { return mSucursalRepositoy.getAllSucursales(usuarioId); }
+    public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepositoy.getAllSucursales(); }
 
     public void insert(Empleado empleado) { mEmpleadoRepository.insert(empleado); }
 

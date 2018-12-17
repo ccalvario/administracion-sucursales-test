@@ -90,7 +90,7 @@ public class AdministracionActivity extends AppCompatActivity
 
         mSucursalViewModel = ViewModelProviders.of(this).get(SucursalViewModel.class);
 
-        mSucursalViewModel.getSucursalesEmpleados().observe(this, new Observer<List<SucursalEmpleados>>() {
+        mSucursalViewModel.getSucursalesConEmpleados().observe(this, new Observer<List<SucursalEmpleados>>() {
             @Override
             public void onChanged(@Nullable final List<SucursalEmpleados> sucursales) {
 

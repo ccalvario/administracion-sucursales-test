@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import java.util.List;
 
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
-import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.db.AppDatabase;
 import prj.ccalvario.administracionsucursales.db.SucursalDao;
@@ -26,7 +25,7 @@ public class SucursalRepository {
         return mSucursalDao.getAllSucursales();
     }
 
-    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados() {
+    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() {
         return mSucursalDao.getSucursalesEmpleados();
     }
 
@@ -34,7 +33,7 @@ public class SucursalRepository {
         return mSucursalDao.getSucursal(id);
     }
 
-    public LiveData<SucursalEmpleados> getSucursalEmpleados(int id) {
+    public LiveData<SucursalEmpleados> getSucursalConEmpleados(int id) {
         return mSucursalDao.getSucursalEmpleados(id);
     }
 

@@ -10,10 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.databinding.DataBindingUtil;
 
-import prj.ccalvario.administracionsucursales.model.Sucursal;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
+import prj.ccalvario.administracionsucursales.model.Sucursal;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
 import prj.ccalvario.administracionsucursales.databinding.ActivityAddSucursalBinding;
 

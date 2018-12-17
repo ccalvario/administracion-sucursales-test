@@ -9,7 +9,6 @@ import java.util.List;
 
 import prj.ccalvario.administracionsucursales.model.Empleado;
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
-import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.model.Sucursal;
@@ -38,7 +37,7 @@ public class SucursalViewModel extends AndroidViewModel {
 
     public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepository.getAllSucursales(); }
 
-    public LiveData<List<SucursalEmpleados>> getSucursalesEmpleados() { return mSucursalRepository.getSucursalesEmpleados(); }
+    public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() { return mSucursalRepository.getSucursalesConEmpleados(); }
 
     public void insert(Sucursal sucursal) { mSucursalRepository.insert(sucursal); }
 
@@ -46,7 +45,7 @@ public class SucursalViewModel extends AndroidViewModel {
 
     public LiveData<Sucursal> getSucursal(int id) { return mSucursalRepository.getSucursal(id); }
 
-    public LiveData<SucursalEmpleados> getSucursalEmpleados(int id) { return mSucursalRepository.getSucursalEmpleados(id); }
+    public LiveData<SucursalEmpleados> getSucursalConEmpleados(int id) { return mSucursalRepository.getSucursalConEmpleados(id); }
 
     public void setSucursal(Sucursal sucursal) {
         this.sucursal.set(sucursal);

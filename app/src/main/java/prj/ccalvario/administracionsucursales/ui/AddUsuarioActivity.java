@@ -51,13 +51,13 @@ public class AddUsuarioActivity extends AppCompatActivity {
         mUsuarioViewModel.getAllUsuarios().observe(this, new Observer<List<Usuario>>(){
             @Override
             public void onChanged(@Nullable final List<Usuario> usuarios) {
-                for(int i = 0; i < usuarios.size(); i++) {
-                    Log.d("ccz Lista de usuarios "
+                /*for(int i = 0; i < usuarios.size(); i++) {
+                    Log.d("Lista de usuarios "
                             + usuarios.get(i).getId()
                             + " nombre " + usuarios.get(i).getNombre()
                             + " email " + usuarios.get(i).getEmail()
                             + " password " + usuarios.get(i).getPassword());
-                }
+                }*/
             }
 
         });

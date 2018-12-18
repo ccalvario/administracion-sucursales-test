@@ -76,7 +76,6 @@ public class AdministracionActivity extends AppCompatActivity
 
             @Override
             public void onEditClick(View v, int position) {
-                Log.d("ccz onItemClick " + position);
                 Sucursal sucursal = mEmpleadosSucursal.get(position).sucursal;
                 if(sucursal != null) {
                     Intent intent = new Intent(AdministracionActivity.this, AddSucursalActivity.class);
@@ -105,15 +104,15 @@ public class AdministracionActivity extends AppCompatActivity
                 adapter.setSucursales(sucursales);
                 mEmpleadosSucursal = sucursales;
 
-                for(int i = 0; i < sucursales.size(); i++) {
-                    Log.d("ccz Lista de sucursales "
+/*                for(int i = 0; i < sucursales.size(); i++) {
+                    Log.d("Lista de sucursales "
                             + sucursales.get(i).sucursal.getId()
                             + " nombre " + sucursales.get(i).sucursal.getNombre()
                             + " numEmp " + sucursales.get(i).empleados.size()
                             + " colonia " + sucursales.get(i).sucursal.getColonia()
                             + " numero " + sucursales.get(i).sucursal.getNumero()
                             + " codigoPostal " + sucursales.get(i).sucursal.getCodigoPostal());
-                }
+                }*/
             }
         });
     }

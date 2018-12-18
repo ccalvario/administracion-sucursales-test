@@ -52,8 +52,6 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
                 public void onChanged(@Nullable final SucursalEmpleados sucursalEmpleados) {
 
                     mSucursalViewModel.sucursalEmpleados.set(sucursalEmpleados);
-                    Log.d("ccz sucursalEmpleados " + mSucursalViewModel.sucursalEmpleados.get().sucursal.getNombre());
-
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                             .findFragmentById(R.id.map);
                     mapFragment.getMapAsync(DetalleSucursalActivity.this);
@@ -90,7 +88,7 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
                         " " + mSucursalViewModel.sucursalEmpleados.get().sucursal.getCiudad() +
                         " " + mSucursalViewModel.sucursalEmpleados.get().sucursal.getPais();
 
-                Log.d("ccz address " + address);
+                Log.d("map address " + address);
                 List<Address> addresses = geoCoder.getFromLocationName(address, 5);
                 if (addresses.size() > 0) {
                     Double lat = (double) (addresses.get(0).getLatitude());

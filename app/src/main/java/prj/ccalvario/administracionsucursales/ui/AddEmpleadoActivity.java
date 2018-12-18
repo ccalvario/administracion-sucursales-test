@@ -81,7 +81,6 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
                         android.R.layout.simple_spinner_item, list);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
-                Log.d("ccz mSucursalIdInicial "+ mSucursalIdInicial + " mPosicionInicial " + mPosicionInicial);
                 if(mSucursalIdInicial > 0) {
                     spinner.setSelection(mPosicionInicial);
                 }

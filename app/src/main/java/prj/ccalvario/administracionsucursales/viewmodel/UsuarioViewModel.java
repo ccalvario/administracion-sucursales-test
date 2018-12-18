@@ -115,7 +115,6 @@ public class UsuarioViewModel extends AndroidViewModel {
         } else if(!password.get().equals(passwordConfirmacion.get())){
             errorPasswordConfirmacion.set(getApplication().getResources().getString(R.string.error_password_no_coincide));
             result = false;
-            Log.d("ccz confirmacion");
         } else {
             errorPasswordConfirmacion.set(null);
         }

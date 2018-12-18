@@ -29,14 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         mBinding.btnLogin.setOnClickListener(
                 (View view) -> { ;
                     mLoginViewModel.startLogin().observe(this, usuario -> {
-                        Log.d("ccz startLogin");
+                        Log.d("startLogin");
                         mLoginViewModel.setUsuario(usuario);
-                        if(usuario != null && usuario.getId() > 0) {
-                            Log.d("ccz Login success "+ usuario.getId());
-                        } else {
-                            Log.d("ccz invalid user");
-                        }
-
                     });
                 });
 

@@ -67,9 +67,8 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        Log.d("ccz xxxx " + mSucursalViewModel.sucursalEmpleados.get().sucursal.getNombre());
+
         if(mSucursalViewModel.sucursalEmpleados.get() != null) {
-            // Add a marker in Sydney and move the camera
             Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
             try {
                 String address = mSucursalViewModel.sucursalEmpleados.get().sucursal.getCalle() +

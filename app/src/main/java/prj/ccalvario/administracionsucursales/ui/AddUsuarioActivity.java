@@ -30,9 +30,17 @@ public class AddUsuarioActivity extends AppCompatActivity {
 
         mBinding.btnCrear.setOnClickListener(
                 (View view) -> {
-                    if(mUsuarioViewModel.registrarUsuario()) {
-                        finish();
-                    }
+                    mUsuarioViewModel.getUsuarioByEmail(mUsuarioViewModel.email.get()).observe(AddUsuarioActivity.this, usuario -> {
+                        if(usuario == null) {
+                            mUsuarioViewModel.errorCrear.set(null);
+                            if(mUsuarioViewModel.registrarUsuario()) {
+                                finish();
+                            }
+                        } else {
+                            mUsuarioViewModel.errorCrear.set(AddUsuarioActivity.this.getResources().getString(R.string.error_crear));
+                        }
+                    });
+
                 });
 
         mBinding.btnLogin.setOnClickListener(

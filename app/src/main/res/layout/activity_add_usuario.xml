@@ -110,6 +110,35 @@
                     android:text="@={viewModel.password}" />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput_password_confirmacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_vertical_margin"
+                app:passwordToggleDrawable="@drawable/ic_menu"
+                app:error="@{viewModel.errorPasswordConfirmacion}">
+
+                <EditText
+                    android:id="@+id/editText_password_confirmacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/usuario_password_confirmacion"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.passwordConfirmacion}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView_crear_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_vertical_margin"
+                android:layout_marginBottom="@dimen/item_vertical_margin"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/mensaje_error"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:text="@={viewModel.errorCrear}" />
+
             <Button
                 android:id="@+id/btn_crear"
                 android:layout_width="match_parent"

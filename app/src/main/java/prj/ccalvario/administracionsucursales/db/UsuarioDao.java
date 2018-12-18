@@ -21,7 +21,7 @@ public interface UsuarioDao {
     LiveData<Usuario> getUsuario(int id);
 
     @Query("SELECT * FROM usuarios WHERE email = :email")
-    LiveData<Usuario> getUsuario(String email);
+    LiveData<Usuario> getUsuarioByEmail(String email);
 
     @Query("SELECT * FROM usuarios WHERE email = :email AND password = :password")
     LiveData<Usuario> getUsuarioByEmailPassword(String email, String password);

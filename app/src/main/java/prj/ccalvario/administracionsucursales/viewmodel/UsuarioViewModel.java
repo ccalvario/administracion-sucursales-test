@@ -23,12 +23,15 @@ public class UsuarioViewModel extends AndroidViewModel {
     public final ObservableField<String> rfc = new ObservableField<>();
     public final ObservableField<String> empresa = new ObservableField<>();
     public final ObservableField<String> password = new ObservableField<>();
+    public final ObservableField<String> passwordConfirmacion = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
     public final ObservableField<String> errorEmail = new ObservableField<>();
     public final ObservableField<String> errorRfc = new ObservableField<>();
     public final ObservableField<String> errorEmpresa = new ObservableField<>();
     public final ObservableField<String> errorPassword = new ObservableField<>();
+    public final ObservableField<String> errorPasswordConfirmacion = new ObservableField<>();
+    public final ObservableField<String> errorCrear = new ObservableField<>();
 
     public UsuarioViewModel(Application application) {
         super(application);
@@ -40,6 +43,8 @@ public class UsuarioViewModel extends AndroidViewModel {
     public LiveData<Usuario> getUsuario(int id) { return mUsuarioRepository.getUsuario(id); }
 
     public LiveData<Usuario> getUsuarioByEmailPassword(String email, String password) { return mUsuarioRepository.getUsuarioByEmailPassword(email, password); }
+
+    public LiveData<Usuario> getUsuarioByEmail(String email) { return mUsuarioRepository.getUsuarioByEmail(email); }
 
     public void insert(Usuario usuario) { mUsuarioRepository.insert(usuario); }
 
@@ -103,6 +108,18 @@ public class UsuarioViewModel extends AndroidViewModel {
         } else {
             errorPassword.set(null);
         }
+
+        if(passwordConfirmacion.get() == null || passwordConfirmacion.get().isEmpty()) {
+            errorPasswordConfirmacion.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
+        } else if(!password.get().equals(passwordConfirmacion.get())){
+            errorPasswordConfirmacion.set(getApplication().getResources().getString(R.string.error_password_no_coincide));
+            result = false;
+            Log.d("ccz confirmacion");
+        } else {
+            errorPasswordConfirmacion.set(null);
+        }
+
         return result;
     }
 }

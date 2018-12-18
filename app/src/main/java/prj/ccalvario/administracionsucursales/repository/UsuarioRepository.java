@@ -31,6 +31,8 @@ public class UsuarioRepository {
 
     public LiveData<Usuario> getUsuario(int id) { return mUsuarioDao.getUsuario(id); }
 
+    public LiveData<Usuario> getUsuarioByEmail(String email) { return mUsuarioDao.getUsuarioByEmail(email); }
+
     public LiveData<Usuario> getUsuarioByEmailPassword(String email, String password) {
         SecureData sec =  new SecureData(mSecretKey, true);
         String value = sec.encryptValue(password);

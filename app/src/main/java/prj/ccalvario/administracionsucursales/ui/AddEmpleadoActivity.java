@@ -45,11 +45,13 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
             mEmpleadolViewModel.getEmpleado(id).observe(this, new Observer<Empleado>() {
                 @Override
                 public void onChanged(@Nullable final Empleado empleado) {
-                    mEmpleadolViewModel.empleado.set(empleado);
+                    mEmpleadolViewModel.nombre.set(empleado.getNombre());
+                    mEmpleadolViewModel.rfc.set(empleado.getRfc());
+                    mEmpleadolViewModel.sucursalId.set(String.valueOf(empleado.getSucursalId()));
+                    mEmpleadolViewModel.puesto.set(empleado.getPuesto());
+                    mEmpleadolViewModel.setId(empleado.getId());
                 }
             });
-        } else {
-            mEmpleadolViewModel.empleado.set(new Empleado());
         }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_sucursales);
@@ -102,7 +104,7 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int sucursalId = mSucursales.get(position).getId();
-        mEmpleadolViewModel.empleado.get().setSucursalId(sucursalId);
+        mEmpleadolViewModel.sucursalId.set(String.valueOf(sucursalId));
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {

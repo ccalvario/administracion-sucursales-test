@@ -20,8 +20,12 @@ public class EmpleadoViewModel extends AndroidViewModel {
 
     private EmpleadoRepository mEmpleadoRepository;
     private SucursalRepository mSucursalRepositoy;
+    private int mId;
 
-    public final ObservableField<Empleado> empleado = new ObservableField<>();
+    public final ObservableField<String> nombre = new ObservableField<>();
+    public final ObservableField<String> rfc = new ObservableField<>();
+    public final ObservableField<String> sucursalId = new ObservableField<>();
+    public final ObservableField<String> puesto = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
     public final ObservableField<String> errorRfc = new ObservableField<>();
@@ -34,6 +38,10 @@ public class EmpleadoViewModel extends AndroidViewModel {
         mSucursalRepositoy = new SucursalRepository(application);
     }
 
+    public int getId() { return mId; }
+
+    public void setId(int id) { mId = id; }
+
     public LiveData<Empleado> getEmpleado(int id) { return mEmpleadoRepository.getEmpleado(id); }
 
     public LiveData<List<Empleado>> getEmpleadosSucursal(int sucursalId) { return mEmpleadoRepository.getEmpleadosSucursales(sucursalId); }
@@ -45,42 +53,48 @@ public class EmpleadoViewModel extends AndroidViewModel {
     public void update(Empleado empleado) { mEmpleadoRepository.update(empleado); }
 
     public void saveEmpleado() {
-        if(empleado.get().getId() > 0){
-            update(empleado.get());
+        Empleado empleado = new Empleado();
+        empleado.setNombre(nombre.get());
+        empleado.setRfc(rfc.get());
+        empleado.setSucursalId(Integer.parseInt(sucursalId.get()));
+        empleado.setPuesto(puesto.get());
+
+        if(mId > 0){
+            empleado.setId(mId);
+            update(empleado);
         } else {
-            insert(empleado.get());
+            insert(empleado);
         }
     }
 
     public boolean ValidateInput() {
         boolean result = true;
 
-        Log.d("ccz validateinput nombre " + empleado.get().getNombre() + " suc " + empleado.get().getSucursalId());
-        if(empleado.get().getNombre() == null) {
+        if(nombre.get() == null || nombre.get().isEmpty()) {
             errorNombre.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorNombre.set(null);
         }
 
-        if(empleado.get().getRfc() == null) {
+        if(rfc.get() == null || rfc.get().isEmpty()) {
             errorRfc.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
-        } else if(!Utils.isRfcValid(empleado.get().getRfc())) {
+        } else if(!Utils.isRfcValid(rfc.get())) {
             errorRfc.set(getApplication().getResources().getString(R.string.error_rfc_invalido));
             result = false;
         } else {
             errorRfc.set(null);
         }
 
-        if(empleado.get().getSucursalId() == 0) {
+        if(sucursalId.get() == null || sucursalId.get().isEmpty()) {
             errorSucursalId.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorSucursalId.set(null);
         }
 
-        if(empleado.get().getPuesto() == null) {
+        if(puesto.get() == null || puesto.get().isEmpty()) {
             errorPuesto.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {

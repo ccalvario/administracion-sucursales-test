@@ -37,7 +37,7 @@
                     android:hint="@string/empleado_nombre"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.empleado.nombre}" />
+                    android:text="@={viewModel.nombre}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -61,7 +61,7 @@
                     android:hint="@string/empleado_rfc"
                     android:inputType="textPersonName|textCapCharacters"
                     android:maxLines="1"
-                    android:text="@={viewModel.empleado.rfc}" />
+                    android:text="@={viewModel.rfc}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -85,7 +85,7 @@
                     android:hint="@string/empleado_puesto"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.empleado.puesto}" />
+                    android:text="@={viewModel.puesto}" />
             </android.support.design.widget.TextInputLayout>
 
             <Spinner

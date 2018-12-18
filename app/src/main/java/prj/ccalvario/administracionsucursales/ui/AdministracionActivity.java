@@ -152,7 +152,10 @@ public class AdministracionActivity extends AppCompatActivity
             Intent activityIntent = new Intent(AdministracionActivity.this, AddEmpleadoActivity.class);
             startActivity(activityIntent);
         } else if (id == R.id.nav_logout) {
-
+            Intent intent = new Intent(AdministracionActivity.this, LoginActivity.class);
+            SessionManager.getInstance().logOut();
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

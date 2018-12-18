@@ -32,4 +32,8 @@ public class SessionManager {
             return "";
         }
     }
+
+    public void logOut() {
+        mUsuario = null;
+    }
 }

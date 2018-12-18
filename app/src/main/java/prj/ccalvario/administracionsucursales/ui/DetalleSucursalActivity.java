@@ -9,6 +9,9 @@ import android.location.Geocoder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,6 +27,7 @@ import java.util.List;
 import java.util.Locale;
 
 import prj.ccalvario.administracionsucursales.R;
+import prj.ccalvario.administracionsucursales.adapter.EmpleadosListAdapter;
 import prj.ccalvario.administracionsucursales.databinding.ActivityDetalleSucursalBinding;
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
@@ -44,6 +48,15 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
 
         mBinding.setViewModel(mSucursalViewModel);
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_empleadosList);
+        final EmpleadosListAdapter adapter = new EmpleadosListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         Bundle b = getIntent().getExtras();
         if(b != null){
             int id = b.getInt("id");
@@ -55,6 +68,8 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                             .findFragmentById(R.id.map);
                     mapFragment.getMapAsync(DetalleSucursalActivity.this);
+
+                    adapter.setEmpleados(sucursalEmpleados.empleados);
                 }
             });
         } else {
@@ -70,6 +85,7 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
                     startActivity(activityIntent);
                     finish();
                 });
+
 
 
     }

@@ -69,9 +69,18 @@
                     android:id="@+id/map"
                     android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="250dp"
                     tools:context=".ui.MapsActivity" />
             </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_registrar_empleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_vertical_margin"
+                android:layout_marginBottom="@dimen/item_vertical_margin"
+                android:layout_gravity="center"
+                android:text="@string/drawer_add_empleado" />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -87,24 +96,22 @@
                     android:layout_marginStart="@dimen/item_horizontal_margin"
                     android:layout_marginEnd="@dimen/item_horizontal_margin">
 
-                        <TextView
-                            android:id="@+id/textView_numEmpleados"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@{@string/num_empleados(viewModel.sucursalEmpleados.empleados.size())}"
-                            android:textSize="18sp"
-                            tools:text="@string/sucursal_calle" />
+                    <TextView
+                        android:id="@+id/textView_numEmpleados"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/num_empleados(viewModel.sucursalEmpleados.empleados.size())}"
+                        tools:text="@string/sucursal_calle" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview_empleadosList"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        tools:listitem="@layout/recyclerview_empleado"
+                        android:scrollbars="none"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <Button
-                android:id="@+id/btn_registrar_empleados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/item_vertical_margin"
-                android:layout_marginBottom="@dimen/item_vertical_margin"
-                android:layout_gravity="center"
-                android:text="@string/drawer_add_empleado" />
         </LinearLayout>
     </ScrollView>
 

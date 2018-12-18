@@ -7,7 +7,6 @@ import android.databinding.ObservableField;
 
 import java.util.List;
 
-import prj.ccalvario.administracionsucursales.db.SessionManager;
 import prj.ccalvario.administracionsucursales.model.Empleado;
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 

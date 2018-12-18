@@ -9,9 +9,15 @@
     android:gravity="bottom">
 
     <TextView
+        android:id="@+id/textView_navHeader_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/textView_navHeader_empresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_vertical_margin" />
 
 </LinearLayout>

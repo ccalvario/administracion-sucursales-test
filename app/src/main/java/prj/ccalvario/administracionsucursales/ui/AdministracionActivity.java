@@ -17,10 +17,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
 import prj.ccalvario.administracionsucursales.adapter.CustomItemClickListener;
+import prj.ccalvario.administracionsucursales.utils.SessionManager;
 import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import trikita.log.Log;
 
@@ -53,6 +55,12 @@ public class AdministracionActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
         navigationView.setNavigationItemSelectedListener(this);
+        View hView =  navigationView.getHeaderView(0);
+        TextView navUsusario = (TextView)hView.findViewById(R.id.textView_navHeader_nombre);
+        navUsusario.setText(SessionManager.getInstance().getUsuario().getNombre());
+
+        TextView navEmpresa = (TextView)hView.findViewById(R.id.textView_navHeader_empresa);
+        navEmpresa.setText(SessionManager.getInstance().getUsuario().getEmpresa());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_sucursalList);
         final SucursalListAdapter adapter = new SucursalListAdapter(this, new CustomItemClickListener() {

@@ -4,16 +4,11 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.Transformations;
 import android.databinding.ObservableField;
-import android.support.annotation.Nullable;
-
-import java.util.List;
 
 import prj.ccalvario.administracionsucursales.R;
-import trikita.log.Log;
-
+import prj.ccalvario.administracionsucursales.utils.SessionManager;
 import prj.ccalvario.administracionsucursales.model.Usuario;
 import prj.ccalvario.administracionsucursales.repository.UsuarioRepository;
 
@@ -38,6 +33,7 @@ public class LoginViewModel extends AndroidViewModel {
         usuario = new MutableLiveData<>();
         isLoggedIn = Transformations.map(usuario, user -> {
             if(user != null && user.getId() > 0) {
+                SessionManager.getInstance().setUsuario(usuario.getValue());
                 errorLogin.set(null);
                 return true;
             } else {

@@ -29,16 +29,18 @@
     <string name="usuario_rfc">RFC</string>
     <string name="usuario_empresa">Empresa</string>
     <string name="usuario_password">Password</string>
+    <string name="usuario_password_confirmacion">Confirmación del password</string>
 
     <string name="btn_login">Iniciar sesión</string>
     <string name="btn_login_crear">¿Ya tienes una cuenta? <u>Iniciar sesión</u></string>
     <string name="btn_crear">Crear cuenta</string>
     <string name="btn_crear_login">¿No tienes una cuenta? <u>Crear cuenta</u></string>
     <string name="error_login">El email o password son incorrectos.</string>
+    <string name="error_crear">Ya existe un usuario registrado con este email.</string>
+    <string name="error_password_no_coincide">La confirmación del password no coincide.</string>
 
     <string name="sucursal_direccion">%1$s No. %2$s, %3$s. C.P %4$s</string>
     <string name="sucursal_direccion_ciudad">%1$s, %2$s</string>
     <string name="navigation_drawer_open">Abir drawer</string>
     <string name="navigation_drawer_close">Cerrar drawer</string>
-    <string name="title_activity_maps">Map</string>
 </resources>

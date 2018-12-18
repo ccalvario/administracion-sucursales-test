@@ -17,10 +17,18 @@ import prj.ccalvario.administracionsucursales.repository.SucursalRepository;
 public class SucursalViewModel extends AndroidViewModel {
 
     private SucursalRepository mSucursalRepository;
+    private int mId;
 
-    public final ObservableField<Sucursal> sucursal = new ObservableField<>();
+    //public final ObservableField<Sucursal> sucursal = new ObservableField<>();
     public final ObservableField<SucursalEmpleados> sucursalEmpleados = new ObservableField<>();
-    public final ObservableField<List<Empleado>> empleadosSucursal = new ObservableField<>();
+    public final ObservableField<List<Empleado>> listaEmpleadosSucursal = new ObservableField<>();
+    public final ObservableField<String> nombre = new ObservableField<>();
+    public final ObservableField<String> calle = new ObservableField<>();
+    public final ObservableField<String> colonia = new ObservableField<>();
+    public final ObservableField<String> numero = new ObservableField<>();
+    public final ObservableField<String> codigoPostal = new ObservableField<>();
+    public final ObservableField<String> ciudad = new ObservableField<>();
+    public final ObservableField<String> pais = new ObservableField<>();
 
     public final ObservableField<String> errorNombre = new ObservableField<>();
     public final ObservableField<String> errorCalle = new ObservableField<>();
@@ -35,6 +43,10 @@ public class SucursalViewModel extends AndroidViewModel {
         mSucursalRepository = new SucursalRepository(application);
     }
 
+    public void setId(int id) { mId = id; }
+
+    public int getId() { return mId; }
+
     public LiveData<List<Sucursal>> getAllSucursales() { return mSucursalRepository.getAllSucursales(); }
 
     public LiveData<List<SucursalEmpleados>> getSucursalesConEmpleados() { return mSucursalRepository.getSucursalesConEmpleados(); }
@@ -47,65 +59,70 @@ public class SucursalViewModel extends AndroidViewModel {
 
     public LiveData<SucursalEmpleados> getSucursalConEmpleados(int id) { return mSucursalRepository.getSucursalConEmpleados(id); }
 
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal.set(sucursal);
-    }
-
     public void saveSucursal() {
-        if(sucursal.get().getId() > 0){
-            update(sucursal.get());
+        Sucursal sucursal = new Sucursal();
+        sucursal.setNombre(nombre.get());
+        sucursal.setCalle(calle.get());
+        sucursal.setColonia(colonia.get());
+        sucursal.setNumero(numero.get());
+        sucursal.setCodigoPostal(codigoPostal.get());
+        sucursal.setCiudad(ciudad.get());
+        sucursal.setPais(pais.get());
+
+        if(mId > 0){
+            sucursal.setId(mId);
+            update(sucursal);
         } else {
-            //sucursal.get().setUsuarioId(SessionManager.getInstance().getUsuarioId());
-            insert(sucursal.get());
+            insert(sucursal);
         }
     }
 
     public boolean ValidateInput() {
         boolean result = true;
 
-        if(sucursal.get().getNombre() == null) {
+        if(nombre.get() == null) {
             errorNombre.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorNombre.set(null);
         }
 
-        if(sucursal.get().getCalle() == null) {
+        if(calle.get() == null) {
             errorCalle.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorCalle.set(null);
         }
 
-        if(sucursal.get().getColonia() == null) {
+        if(colonia.get() == null) {
             errorColonia.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorColonia.set(null);
         }
 
-        if(sucursal.get().getNumero() == null) {
+        if(numero.get() == null) {
             errorNumero.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorNumero.set(null);
         }
 
-        if(sucursal.get().getCodigoPostal() == null) {
+        if(codigoPostal.get() == null) {
             errorCodigoPostal.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorCodigoPostal.set(null);
         }
 
-        if(sucursal.get().getCiudad() == null) {
+        if(ciudad.get() == null) {
             errorCiudad.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {
             errorCiudad.set(null);
         }
 
-        if(sucursal.get().getPais() == null) {
+        if(pais.get() == null) {
             errorPais.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else {

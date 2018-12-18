@@ -37,14 +37,17 @@ public class AddSucursalActivity extends AppCompatActivity {
             mSucursalViewModel.getSucursal(id).observe(this, new Observer<Sucursal>() {
                 @Override
                 public void onChanged(@Nullable final Sucursal sucursal) {
-                    mSucursalViewModel.sucursal.set(sucursal);
+                    mSucursalViewModel.setId(sucursal.getId());
+                    mSucursalViewModel.nombre.set(sucursal.getNombre());
+                    mSucursalViewModel.calle.set(sucursal.getCalle());
+                    mSucursalViewModel.colonia.set(sucursal.getColonia());
+                    mSucursalViewModel.numero.set(sucursal.getNumero());
+                    mSucursalViewModel.codigoPostal.set(sucursal.getCodigoPostal());
+                    mSucursalViewModel.ciudad.set(sucursal.getCiudad());
+                    mSucursalViewModel.pais.set(sucursal.getPais());
                 }
             });
-        } else {
-            mSucursalViewModel.sucursal.set(new Sucursal());
         }
-
-
 
         mBinding.setViewModel(mSucursalViewModel);
     }

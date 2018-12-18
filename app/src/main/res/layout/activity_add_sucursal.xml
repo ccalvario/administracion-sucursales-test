@@ -38,7 +38,7 @@
                     android:hint="@string/sucursal_nombre"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.nombre}" />
+                    android:text="@={viewModel.nombre}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -63,32 +63,7 @@
                     android:hint="@string/sucursal_calle"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.calle}" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInput_colonia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                app:passwordToggleDrawable="@drawable/ic_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_calle"
-                app:error="@{viewModel.errorColonia}">
-
-                <EditText
-                    android:id="@+id/editText_colonia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/sucursal_colonia"
-                    android:inputType="textPersonName|textCapSentences"
-                    android:maxLines="1"
-                    android:text="@={viewModel.sucursal.colonia}" />
+                    android:text="@={viewModel.calle}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -113,7 +88,32 @@
                     android:hint="@string/sucursal_numero"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.numero}" />
+                    android:text="@={viewModel.numero}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput_colonia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                app:passwordToggleDrawable="@drawable/ic_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_calle"
+                app:error="@{viewModel.errorColonia}">
+
+                <EditText
+                    android:id="@+id/editText_colonia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/sucursal_colonia"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:maxLines="1"
+                    android:text="@={viewModel.colonia}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -138,7 +138,7 @@
                     android:hint="@string/sucursal_codigo_postal"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.codigoPostal}" />
+                    android:text="@={viewModel.codigoPostal}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -163,7 +163,7 @@
                     android:hint="@string/sucursal_ciudad"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.ciudad}" />
+                    android:text="@={viewModel.ciudad}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -188,7 +188,7 @@
                     android:hint="@string/sucursal_pais"
                     android:inputType="textPersonName|textCapSentences"
                     android:maxLines="1"
-                    android:text="@={viewModel.sucursal.pais}" />
+                    android:text="@={viewModel.pais}" />
             </android.support.design.widget.TextInputLayout>
 
         </android.support.constraint.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ import prj.ccalvario.administracionsucursales.model.SucursalEmpleados;
 import prj.ccalvario.administracionsucursales.viewmodel.SucursalViewModel;
 import trikita.log.Log;
 
-public class DetalleSucursalActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class DetalleSucursalActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private SucursalViewModel mSucursalViewModel;
     ActivityDetalleSucursalBinding mBinding;
@@ -92,5 +93,11 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+        marker.showInfoWindow();
+        return true;
     }
 }

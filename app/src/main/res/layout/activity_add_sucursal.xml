@@ -78,7 +78,7 @@
                 app:passwordToggleDrawable="@drawable/ic_menu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_colonia"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_calle"
                 app:error="@{viewModel.errorNumero}">
 
                 <EditText
@@ -103,7 +103,7 @@
                 app:passwordToggleDrawable="@drawable/ic_menu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_calle"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_numero"
                 app:error="@{viewModel.errorColonia}">
 
                 <EditText
@@ -128,7 +128,7 @@
                 app:passwordToggleDrawable="@drawable/ic_menu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_numero"
+                app:layout_constraintTop_toBottomOf="@+id/textInput_colonia"
                 app:error="@{viewModel.errorCodigoPostal}">
 
                 <EditText

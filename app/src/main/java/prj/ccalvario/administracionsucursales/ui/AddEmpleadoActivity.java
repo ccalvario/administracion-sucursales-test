@@ -29,6 +29,8 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
     private EmpleadoViewModel mEmpleadolViewModel;
     ActivityAddEmpleadoBinding mBinding;
     private List<Sucursal> mSucursales;
+    private int mSucursalIdInicial;
+    private int mPosicionInicial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +40,27 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
 
         mBinding.setViewModel(mEmpleadolViewModel);
 
+        mSucursalIdInicial = 0;
+        mPosicionInicial = 0;
+
         Bundle b = getIntent().getExtras();
         if(b != null){
-            setTitle(getResources().getString(R.string.activity_title_edit_empleado));
             int id = b.getInt("id");
-            mEmpleadolViewModel.getEmpleado(id).observe(this, new Observer<Empleado>() {
-                @Override
-                public void onChanged(@Nullable final Empleado empleado) {
-                    mEmpleadolViewModel.nombre.set(empleado.getNombre());
-                    mEmpleadolViewModel.rfc.set(empleado.getRfc());
-                    mEmpleadolViewModel.sucursalId.set(String.valueOf(empleado.getSucursalId()));
-                    mEmpleadolViewModel.puesto.set(empleado.getPuesto());
-                    mEmpleadolViewModel.setId(empleado.getId());
-                }
-            });
+            if(id > 0) {
+                setTitle(getResources().getString(R.string.activity_title_edit_empleado));
+
+                mEmpleadolViewModel.getEmpleado(id).observe(this, new Observer<Empleado>() {
+                    @Override
+                    public void onChanged(@Nullable final Empleado empleado) {
+                        mEmpleadolViewModel.nombre.set(empleado.getNombre());
+                        mEmpleadolViewModel.rfc.set(empleado.getRfc());
+                        mEmpleadolViewModel.sucursalId.set(String.valueOf(empleado.getSucursalId()));
+                        mEmpleadolViewModel.puesto.set(empleado.getPuesto());
+                        mEmpleadolViewModel.setId(empleado.getId());
+                    }
+                });
+            }
+            mSucursalIdInicial = b.getInt("sucursalId");
         }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_sucursales);
@@ -64,11 +73,18 @@ public class AddEmpleadoActivity extends AppCompatActivity implements AdapterVie
                 List<String> list = new ArrayList<String>();
                 for(int i = 0; i < sucursales.size(); i++) {
                     list.add(sucursales.get(i).getNombre());
+                    if(mSucursalIdInicial > 0 && sucursales.get(i).getId() == mSucursalIdInicial) {
+                        mPosicionInicial = i;
+                    }
                 }
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddEmpleadoActivity.this,
                         android.R.layout.simple_spinner_item, list);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
+                Log.d("ccz mSucursalIdInicial "+ mSucursalIdInicial + " mPosicionInicial " + mPosicionInicial);
+                if(mSucursalIdInicial > 0) {
+                    spinner.setSelection(mPosicionInicial);
+                }
             }
         });
 

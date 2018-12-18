@@ -66,6 +66,9 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
         mBinding.btnRegistrarEmpleados.setOnClickListener(
                 (View view) -> {
                     Intent activityIntent = new Intent(DetalleSucursalActivity.this, AddEmpleadoActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("sucursalId", mSucursalViewModel.sucursalEmpleados.get().sucursal.getId());
+                    activityIntent.putExtras(bundle);
                     startActivity(activityIntent);
                     finish();
                 });

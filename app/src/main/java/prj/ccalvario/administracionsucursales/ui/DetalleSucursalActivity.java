@@ -2,12 +2,14 @@ package prj.ccalvario.administracionsucursales.ui;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -61,6 +63,13 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
             mSucursalViewModel.sucursalEmpleados.set(new SucursalEmpleados());
         }
 
+        mBinding.btnRegistrarEmpleados.setOnClickListener(
+                (View view) -> {
+                    Intent activityIntent = new Intent(DetalleSucursalActivity.this, AddEmpleadoActivity.class);
+                    startActivity(activityIntent);
+                    finish();
+                });
+
 
     }
 
@@ -86,7 +95,7 @@ public class DetalleSucursalActivity extends AppCompatActivity implements OnMapR
 
                     LatLng mark = new LatLng(lat, lon);
                     mMap.addMarker(new MarkerOptions().position(mark).title(mSucursalViewModel.sucursalEmpleados.get().sucursal.getNombre()));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 12));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 14));
                 }
             } catch (IOException e) {
                 e.printStackTrace();

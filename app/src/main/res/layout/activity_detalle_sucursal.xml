@@ -79,24 +79,32 @@
                 app:cardUseCompatPadding="true">
 
                 <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/item_vertical_margin"
-                android:layout_marginBottom="@dimen/item_vertical_margin"
-                android:layout_marginStart="@dimen/item_horizontal_margin"
-                android:layout_marginEnd="@dimen/item_horizontal_margin">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/item_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_vertical_margin"
+                    android:layout_marginStart="@dimen/item_horizontal_margin"
+                    android:layout_marginEnd="@dimen/item_horizontal_margin">
 
-                    <TextView
-                        android:id="@+id/textView_numEmpleados"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{@string/num_empleados(viewModel.sucursalEmpleados.empleados.size())}"
-                        android:textSize="18sp"
-                        tools:text="@string/sucursal_calle" />
+                        <TextView
+                            android:id="@+id/textView_numEmpleados"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/num_empleados(viewModel.sucursalEmpleados.empleados.size())}"
+                            android:textSize="18sp"
+                            tools:text="@string/sucursal_calle" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
+            <Button
+                android:id="@+id/btn_registrar_empleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_vertical_margin"
+                android:layout_marginBottom="@dimen/item_vertical_margin"
+                android:layout_gravity="center"
+                android:text="@string/drawer_add_empleado" />
         </LinearLayout>
     </ScrollView>
 

@@ -3,16 +3,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_administracion"
-            android:title="Inicio"
+            android:title="@string/drawer_inicio"
             android:checked="true" />
         <item
             android:id="@+id/nav_add_sucursal"
-            android:title="Registrar Sucursal" />
+            android:title="@string/drawer_add_sucursal"
+            android:checkable="false" />
         <item
             android:id="@+id/nav_add_empleado"
-            android:title="Registrar Empleado" />
+            android:title="@string/drawer_add_empleado"
+            android:checkable="false"/>
         <item
             android:id="@+id/nav_logout"
-            android:title="Cerrar Sesión" />
+            android:title="@string/drawer_logout"
+            android:checkable="false"/>
     </group>
 </menu>

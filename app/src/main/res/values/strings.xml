@@ -19,6 +19,10 @@
     <string name="error_rfc_invalido">RFC inválido.</string>
     <string name="error_email_invalido">Email inválido.</string>
     <string name="num_empleados">Núm. de empleados: %1$s</string>
+    <string name="drawer_inicio">Inicio</string>
+    <string name="drawer_add_sucursal">Registrar_sucursal</string>
+    <string name="drawer_add_empleado">Registrar empleado</string>
+    <string name="drawer_logout">Cerrar Sesión</string>
 
     <string name="empleado_nombre">Nombre</string>
     <string name="empleado_rfc">RFC</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="prj.ccalvario.administracionsucursales">
+    package="prj.ccalvario.administracionsucursales" >
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -8,12 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".ui.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
@@ -24,34 +27,40 @@
         <activity
             android:name=".ui.AddSucursalActivity"
             android:label="@string/activity_title_add_sucursal"
-            android:parentActivityName=".ui.AdministracionActivity">
+            android:parentActivityName=".ui.AdministracionActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />
         </activity>
         <activity
             android:name=".ui.AddEmpleadoActivity"
-            android:label="@string/activity_title_add_empleado">
+            android:label="@string/activity_title_add_empleado" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />
         </activity>
         <activity
             android:name=".ui.DetalleSucursalActivity"
-            android:label="@string/activity_title_detalle_sucursal">
+            android:label="@string/activity_title_detalle_sucursal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.AdministracionActivity" />
         </activity>
-        <activity android:name=".ui.LoginActivity"
-            android:label="@string/activity_title_login">
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="@string/activity_title_login" >
         </activity>
-        <activity android:name=".ui.AddUsuarioActivity"
-            android:label="@string/activity_title_add_usuario">
+        <activity
+            android:name=".ui.AddUsuarioActivity"
+            android:label="@string/activity_title_add_usuario" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.LoginActivity" />
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
     </application>
 
 </manifest>

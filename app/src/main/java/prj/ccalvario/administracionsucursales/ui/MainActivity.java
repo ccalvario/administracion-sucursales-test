@@ -22,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
         String email = SessionManager.getInstance().getStoredUsername();
         String password = SessionManager.getInstance().getStoredUPassword();
 
+        if(email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            Intent activityIntent = new Intent(this, LoginActivity.class);
+            startActivity(activityIntent);
+            finish();
+            return;
+        }
+
         mLoginViewModel.login(email, password).observe(this, usuario -> {
             mLoginViewModel.setUsuario(usuario);
         });

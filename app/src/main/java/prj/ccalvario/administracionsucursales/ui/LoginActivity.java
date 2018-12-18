@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import prj.ccalvario.administracionsucursales.model.Usuario;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.R;
@@ -26,8 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         mBinding.setViewModel(mLoginViewModel);
 
         mBinding.btnLogin.setOnClickListener(
-                (View view) -> {
+                (View view) -> { ;
                     mLoginViewModel.startLogin().observe(this, usuario -> {
+                        Log.d("ccz startLogin");
                         mLoginViewModel.setUsuario(usuario);
                         if(usuario != null && usuario.getId() > 0) {
                             Log.d("ccz Login success "+ usuario.getId());
@@ -40,9 +42,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mBinding.btnCrear.setOnClickListener(
                 (View view) -> {
+                    //finish();
+                    mLoginViewModel.email.set(null);
+                    mLoginViewModel.password.set(null);
                     Intent intent = new Intent(LoginActivity.this, AddUsuarioActivity.class);
                     startActivity(intent);
-                    //finish();
                 });
 
         mLoginViewModel.getIsLoggedIn().observe(this, response -> {

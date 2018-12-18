@@ -7,6 +7,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 import android.databinding.ObservableField;
 
+import trikita.log.Log;
+
 import prj.ccalvario.administracionsucursales.R;
 import prj.ccalvario.administracionsucursales.utils.SessionManager;
 import prj.ccalvario.administracionsucursales.model.Usuario;
@@ -26,6 +28,12 @@ public class LoginViewModel extends AndroidViewModel {
     private final LiveData<Boolean> isLoggedIn;
     private final MutableLiveData<Usuario> usuario;
 
+    private static final MutableLiveData ABSENT = new MutableLiveData();
+    {
+        //noinspection unchecked
+        ABSENT.setValue(null);
+    }
+
     public LoginViewModel(Application application) {
         super(application);
         mUsuarioRepository = new UsuarioRepository(application);
@@ -34,7 +42,10 @@ public class LoginViewModel extends AndroidViewModel {
         isLoggedIn = Transformations.map(usuario, user -> {
             if(user != null && user.getId() > 0) {
                 SessionManager.getInstance().setUsuario(usuario.getValue());
-                SessionManager.getInstance().storeCredencials();
+                if(password.get() != null && !password.get().isEmpty()) {
+                    SessionManager.getInstance().storeCredencials(email.get(), password.get());
+                }
+
                 errorLogin.set(null);
                 return true;
             } else {
@@ -67,24 +78,25 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public LiveData<Usuario> startLogin() {
-        if (validateInputLogin()) {
+        if (validateInput()) {
             return login(email.get(), password.get());
         }
-        return null;
+        return ABSENT;
     }
 
 
-    public boolean validateInputLogin() {
+    public boolean validateInput() {
         boolean result = true;
-
         if(email.get() == null || email.get().isEmpty()) {
             errorEmail.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
         } else {
             errorEmail.set(null);
         }
 
         if(password.get() == null || password.get().isEmpty()) {
             errorPassword.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
         } else {
             errorPassword.set(null);
         }

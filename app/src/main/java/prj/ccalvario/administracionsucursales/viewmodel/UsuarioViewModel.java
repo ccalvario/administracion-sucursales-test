@@ -84,7 +84,7 @@ public class UsuarioViewModel extends AndroidViewModel {
             errorRfc.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
         } else if (!Utils.isRfcValid(rfc.get())) {
-            errorEmail.set(getApplication().getResources().getString(R.string.error_rfc_invalido));
+            errorRfc.set(getApplication().getResources().getString(R.string.error_rfc_invalido));
             result = false;
         } else {
             errorRfc.set(null);

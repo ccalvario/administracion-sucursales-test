@@ -1,7 +1,7 @@
 package prj.ccalvario.administracionsucursales.utils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.os.Build;
 
 import trikita.log.Log;
 
@@ -12,6 +12,7 @@ public class SessionManager {
     private static SessionManager sInstance;
     private Context mContext;
     private Usuario mUsuario;
+    private String mSecretKey;
 
     private final String PREF_NAME = "preferencias";
     private final String KEY_USERNAME = "key_username";
@@ -20,6 +21,7 @@ public class SessionManager {
     public static SessionManager getInstance() {
         if(sInstance == null) {
             sInstance = new SessionManager();
+            sInstance.mSecretKey = Build.USER + Build.DEVICE + Build.ID;
         }
 
         return sInstance;
@@ -37,40 +39,24 @@ public class SessionManager {
         return mUsuario;
     }
 
-    public String getUsuarioId() {
-        if(mUsuario != null) {
-            return String.valueOf(mUsuario.getId());
-        } else {
-            return "";
-        }
-    }
-
     public void logOut() {
-        mUsuario = null;
-        SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME, 0);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(KEY_USERNAME, "");
-        editor.putString(KEY_PASSWORD, "");
-        editor.apply();
+        SecurePreferences preferences = new SecurePreferences(mContext, PREF_NAME, mSecretKey, true);
+        preferences.clear();
     }
 
-    public void storeCredencials() {
-        if(mUsuario != null) {
-            SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME, 0);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString(KEY_USERNAME, mUsuario.getEmail());
-            editor.putString(KEY_PASSWORD, mUsuario.getPassword());
-            editor.apply();
-        }
+    public void storeCredencials(String username, String password) {
+        SecurePreferences preferences = new SecurePreferences(mContext, PREF_NAME, mSecretKey, true);
+        preferences.put(KEY_USERNAME, username);
+        preferences.put(KEY_PASSWORD, password);
     }
 
     public String getStoredUsername() {
-        SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME, 0);
-        return pref.getString(KEY_USERNAME, "");
+        SecurePreferences preferences = new SecurePreferences(mContext, PREF_NAME, mSecretKey, true);
+        return preferences.getString(KEY_USERNAME);
     }
 
     public String getStoredUPassword() {
-        SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME, 0);
-        return pref.getString(KEY_PASSWORD, "");
+        SecurePreferences preferences = new SecurePreferences(mContext, PREF_NAME, mSecretKey, true);
+        return preferences.getString(KEY_PASSWORD);
     }
 }

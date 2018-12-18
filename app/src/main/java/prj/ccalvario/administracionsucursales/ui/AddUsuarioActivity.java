@@ -47,7 +47,8 @@ public class AddUsuarioActivity extends AppCompatActivity {
                     Log.d("ccz Lista de usuarios "
                             + usuarios.get(i).getId()
                             + " nombre " + usuarios.get(i).getNombre()
-                            + " email " + usuarios.get(i).getEmail());
+                            + " email " + usuarios.get(i).getEmail()
+                            + " password " + usuarios.get(i).getPassword());
                 }
             }
 

@@ -34,6 +34,7 @@ public class LoginViewModel extends AndroidViewModel {
         isLoggedIn = Transformations.map(usuario, user -> {
             if(user != null && user.getId() > 0) {
                 SessionManager.getInstance().setUsuario(usuario.getValue());
+                SessionManager.getInstance().storeCredencials();
                 errorLogin.set(null);
                 return true;
             } else {
@@ -61,9 +62,13 @@ public class LoginViewModel extends AndroidViewModel {
 
     public void setUsuario(Usuario usuario) { this.usuario.setValue(usuario); }
 
+    public LiveData<Usuario> login(String email, String password) {
+        return getUsuarioByEmailPassword(email, password);
+    }
+
     public LiveData<Usuario> startLogin() {
         if (validateInputLogin()) {
-            return getUsuarioByEmailPassword(email.get(), password.get());
+            return login(email.get(), password.get());
         }
         return null;
     }

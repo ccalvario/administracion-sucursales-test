@@ -8,6 +8,7 @@ import android.databinding.ObservableField;
 import java.util.List;
 
 import prj.ccalvario.administracionsucursales.R;
+import prj.ccalvario.administracionsucursales.utils.Utils;
 import trikita.log.Log;
 
 import prj.ccalvario.administracionsucursales.model.Usuario;
@@ -72,12 +73,18 @@ public class UsuarioViewModel extends AndroidViewModel {
         if(email.get() == null || email.get().isEmpty()) {
             errorEmail.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
             result = false;
+        } else if (!Utils.isEmailValid(email.get())) {
+            errorEmail.set(getApplication().getResources().getString(R.string.error_email_invalido));
+            result = false;
         } else {
             errorEmail.set(null);
         }
 
         if(rfc.get() == null || rfc.get().isEmpty()) {
             errorRfc.set(getApplication().getResources().getString(R.string.error_campo_obligatorio));
+            result = false;
+        } else if (!Utils.isRfcValid(rfc.get())) {
+            errorEmail.set(getApplication().getResources().getString(R.string.error_rfc_invalido));
             result = false;
         } else {
             errorRfc.set(null);

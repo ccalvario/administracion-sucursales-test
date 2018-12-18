@@ -9,7 +9,7 @@ public class Utils {
         return result;
     }
 
-    public static boolean isEmailValid(String rfc) {
+    public static boolean isEmailValid(String email) {
         boolean result = true;
         return result;
     }
